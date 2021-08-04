@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Issuing Countries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Current country name</th>
+      <th>Old country name</th>
+      <th>Listing</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @issuing_countries.each do |issuing_country| %>
+      <tr>
+        <td><%= issuing_country.current_country_name %></td>
+        <td><%= issuing_country.old_country_name %></td>
+        <td><%= issuing_country.listing_id %></td>
+        <td><%= link_to 'Show', issuing_country %></td>
+        <td><%= link_to 'Edit', edit_issuing_country_path(issuing_country) %></td>
+        <td><%= link_to 'Destroy', issuing_country, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Issuing Country', new_issuing_country_path %>

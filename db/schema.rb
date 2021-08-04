@@ -1,0 +1,102 @@
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# This file is the source Rails uses to define your schema when running `rails
+# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
+#
+# It's strongly recommended that you check this file into your version control system.
+
+ActiveRecord::Schema.define(version: 2021_08_04_002315) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "unit"
+    t.string "street"
+    t.string "post_code"
+    t.string "suburb"
+    t.string "country"
+    t.string "state"
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["profile_id"], name: "index_addresses_on_profile_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "image_path"
+    t.string "byte_size"
+    t.bigint "listing_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["listing_id"], name: "index_images_on_listing_id"
+  end
+
+  create_table "issuing_countries", force: :cascade do |t|
+    t.string "current_country_name"
+    t.string "old_country_name"
+    t.bigint "listing_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["listing_id"], name: "index_issuing_countries_on_listing_id"
+  end
+
+  create_table "listings", force: :cascade do |t|
+    t.string "title"
+    t.string "denomination"
+    t.string "condition"
+    t.text "description"
+    t.float "price"
+    t.integer "buyer_id"
+    t.integer "seller_id"
+    t.bigint "profile_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["profile_id"], name: "index_listings_on_profile_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "username"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "years", force: :cascade do |t|
+    t.integer "year"
+    t.boolean "bc_ad"
+    t.bigint "listing_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["listing_id"], name: "index_years_on_listing_id"
+  end
+
+  add_foreign_key "addresses", "profiles"
+  add_foreign_key "images", "listings"
+  add_foreign_key "issuing_countries", "listings"
+  add_foreign_key "listings", "profiles"
+  add_foreign_key "profiles", "users"
+  add_foreign_key "years", "listings"
+end

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Current country name:</strong>
+  <%= @issuing_country.current_country_name %>
+</p>
+
+<p>
+  <strong>Old country name:</strong>
+  <%= @issuing_country.old_country_name %>
+</p>
+
+<p>
+  <strong>Listing:</strong>
+  <%= @issuing_country.listing_id %>
+</p>
+
+<%= link_to 'Edit', edit_issuing_country_path(@issuing_country) %> |
+<%= link_to 'Back', issuing_countries_path %>
