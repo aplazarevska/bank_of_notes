@@ -1,49 +1,3 @@
-<!-- <p id="notice"><%= notice %></p>
-
-<% @listing.images.each do |image| %>
-  <%= image_tag image %>
-<% end %>
-
-<p>
-  <strong>Title:</strong>
-  <%= @listing.title %>
-</p>
-
-<p>
-  <strong>Denomination:</strong>
-  <%= @listing.denomination %>
-</p>
-
-<p>
-  <strong>Condition:</strong>
-  <%= @listing.condition %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @listing.description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @listing.price %>
-</p>
-
-<%# <p>
-  <strong>Buyer:</strong>
-  <%= @listing.buyer_id %>
-<%# </p> %>
-
-<p>
-  <strong>Seller:</strong>
-  <%= @listing.seller.username %>
-</p> -->
-
-<%# <p>
-  <strong>Profile:</strong>
-  <%= @listing.profile_id %>
-<%# </p> %>
-
 <p id="notice"><%= notice %></p>
 
 <h1 class="title"><%= @listing.title %></h1>
@@ -81,13 +35,14 @@
         <p>Denomination: <%= @listing.denomination %></p>
         <p>Condition: <%= @listing.condition %></p>
         <p>Description: <%= @listing.description %></p>
-        <p>Price: <%= @listing.price %></p>
-        <%= link_to 'Buy', listings_path, class: "btn btn-warning" %>
-      </p>
+        <p>Price: $<%= @listing.price %></p>
+        <%= link_to 'Buy', new_user_registration_path(user_type: "buyer"), class: "btn btn-warning" %>
+        </p>
     </div>
     <br>
   </div>
 </div>
+
 
 <%# <%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-warning"%>
 
@@ -95,3 +50,14 @@
 <br>
 <%# <%= link_to 'View', listing_path(@listing.id), class: "btn btn-warning" %> 
 
+<%# <button data-stripe="payment">Buy</button> %>
+
+<!-- <script src="https://js.stripe.com/v3/"></script>
+<script>
+  document.querySelector("[data-stripe='payment']").addListingListener("click", () => {
+    const stripe = Stripe("<%= Rails.application.credentials.dig(:stripe, :public_key) %>");
+    stripe.redirectToCheckout ({
+      sessionId: "<%= @session_id %>"
+    });
+  });
+</script> -->
