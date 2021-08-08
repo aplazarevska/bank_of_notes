@@ -36,28 +36,24 @@
         <p>Condition: <%= @listing.condition %></p>
         <p>Description: <%= @listing.description %></p>
         <p>Price: $<%= @listing.price %></p>
-        <%= link_to 'Buy', new_user_registration_path(user_type: "buyer"), class: "btn btn-warning" %>
+        <%= link_to 'Buy', new_user_session_path(user_type: "buyer"), class: "btn btn-warning" %>
         </p>
     </div>
     <br>
   </div>
 </div>
 
-
-<%# <%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-warning"%>
+<% if (current_user && current_user.profile && (current_user.profile.id == @listing.seller.id)) %>
+  <%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-warning" %> 
+<% else %>
+  <% if @listing.buyer %>
+    <button class="btn btn-warning">Sold</button>
+  <% else %>
+    <% if current_user && current_user.profile %>
+      <%= link_to 'Buy', payment_path(listing_id: @listing.id), method: :post, class: "btn btn-warning" %>
+    <% end %>
+  <% end %>
+<% end %>
 
 <br>
 <br>
-<%# <%= link_to 'View', listing_path(@listing.id), class: "btn btn-warning" %> 
-
-<%# <button data-stripe="payment">Buy</button> %>
-
-<!-- <script src="https://js.stripe.com/v3/"></script>
-<script>
-  document.querySelector("[data-stripe='payment']").addListingListener("click", () => {
-    const stripe = Stripe("<%= Rails.application.credentials.dig(:stripe, :public_key) %>");
-    stripe.redirectToCheckout ({
-      sessionId: "<%= @session_id %>"
-    });
-  });
-</script> -->

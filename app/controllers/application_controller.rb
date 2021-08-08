@@ -10,8 +10,10 @@ class ApplicationController < ActionController::Base
       if(params[:user][:user_type] == "buyer")
         root_path
       else
-        new_listing_path
+        listings_path
       end
+    elsif(params[:user][:user_type] == "returning_user")
+        root_path
     else
       new_profile_path(user_type: params[:user][:user_type]) || root_path
     end
