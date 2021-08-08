@@ -36,24 +36,34 @@
         <p>Condition: <%= @listing.condition %></p>
         <p>Description: <%= @listing.description %></p>
         <p>Price: $<%= @listing.price %></p>
-        <%= link_to 'Buy', new_user_session_path(user_type: "buyer"), class: "btn btn-warning" %>
+        <%# the buy button is there, but once clicked it checks if the user has signed in, then it takes it to payment site %>
+        <%# <%= link_to 'Buy', new_user_session_path(user_type: "buyer"), class: "btn btn-warning" %>
+        <div>
+          <%# if the user is the one who created the listing he can edit and delete the listing %>
+          <% if (current_user && current_user.profile && (current_user.profile.id == @listing.seller.id)) %>
+            <%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-warning" %> 
+            <%= link_to 'Delete', @listing, method: :delete, class: "btn btn-warning" %> 
+          <% else %>
+            <%# if the user is buyer he can see the sold button %>
+            <% if @listing.buyer %>
+              <button class="btn btn-warning">Sold</button>
+            <% end %>
+          <% end %>
+        </div>
+            
+        <div>
+          <%# the user can see the buy button always, but when click on it first he needs to sign in to make the purchase %>
+          <% if current_user && current_user.profile %>
+            <%= link_to 'Buy', payment_path(listing_id: @listing.id), method: :post, class: "btn btn-warning" %>
+          <% end %>
+        </div>
         </p>
     </div>
     <br>
   </div>
 </div>
 
-<% if (current_user && current_user.profile && (current_user.profile.id == @listing.seller.id)) %>
-  <%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-warning" %> 
-<% else %>
-  <% if @listing.buyer %>
-    <button class="btn btn-warning">Sold</button>
-  <% else %>
-    <% if current_user && current_user.profile %>
-      <%= link_to 'Buy', payment_path(listing_id: @listing.id), method: :post, class: "btn btn-warning" %>
-    <% end %>
-  <% end %>
-<% end %>
+
 
 <br>
 <br>

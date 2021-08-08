@@ -7,4 +7,5 @@ class Listing < ApplicationRecord
   # has_many_attached :pictures
 
   validates :price, presence: true
+  validates :images, presence: true
 end
