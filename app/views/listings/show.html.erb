@@ -2,9 +2,18 @@
 
 <h1 class="title"><%= @listing.title %></h1>
 
+<%# made cards for better layout %>
 <div class="row">
   <div class="col">
-    <div class="card">
+    <%# individual cards for each image, two images to be uploaded, obverse and reverse %>
+    <div class="card" style="width: 100%;">
+      <%= image_tag @listing.images.first, class: "card-img-top" %>
+    </div>
+    <div class="card" style="width: 100%">
+      <%= image_tag @listing.images.last, class: "card-img-top" %>
+    </div>
+  </div>
+      <!-- <%# included carousel to list through the photos %>
       <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -26,15 +35,15 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
-      </div> 
-    </div>
-  </div>
+      </div> -->
   <div class="col">
     <div class="card-body border border-warning">
+      <%# the information for the listings form %>
       <p class="card-text">
         <p>Denomination: <%= @listing.denomination %></p>
         <p>Condition: <%= @listing.condition %></p>
         <p>Description: <%= @listing.description %></p>
+        <p>Seller: <%= @listing.seller.username %></p>
         <p>Price: $<%= @listing.price %></p>
         <%# the buy button is there, but once clicked it checks if the user has signed in, then it takes it to payment site %>
         <%# <%= link_to 'Buy', new_user_session_path(user_type: "buyer"), class: "btn btn-warning" %>
@@ -47,14 +56,12 @@
             <%# if the user is buyer he can see the sold button %>
             <% if @listing.buyer %>
               <button class="btn btn-warning">Sold</button>
+            <% else %>
+                <%# the user can see the buy button if he is signed in %>
+                <% if current_user && current_user.profile %>
+                  <%= link_to 'Buy', payment_path(listing_id: @listing.id), method: :post, class: "btn btn-warning" %>
+                <% end %>
             <% end %>
-          <% end %>
-        </div>
-            
-        <div>
-          <%# the user can see the buy button always, but when click on it first he needs to sign in to make the purchase %>
-          <% if current_user && current_user.profile %>
-            <%= link_to 'Buy', payment_path(listing_id: @listing.id), method: :post, class: "btn btn-warning" %>
           <% end %>
         </div>
         </p>

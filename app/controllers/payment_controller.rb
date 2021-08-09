@@ -27,7 +27,7 @@ class PaymentController < ApplicationController
         }],
         mode: 'payment',
       success_url: "#{root_path}/listings/#{@listing.id}?checkout=success",
-      cancel_url: "#{root_path}",
+      cancel_url: "#{root_path}/listings/#{@listing.id}",
     })
 
     redirect_to session.url
