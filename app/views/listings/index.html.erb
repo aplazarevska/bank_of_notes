@@ -16,6 +16,8 @@
         <p class="card-text">
           <strong><%= listing.title %></strong>
           <p>Denomination: <%= listing.denomination %></p>
+          <p>Issuing country: <%= listing.issuing_country %></p>
+          <p>Year: <%= listing.year %></p>
           <p>Price: $<%= listing.price %></p>
           <%= link_to 'View', listing_path(listing.id), class: "btn btn-warning" %>
         </p>
