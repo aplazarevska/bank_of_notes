@@ -75,18 +75,5 @@ class ListingsController < ApplicationController
       params.require(:listing).permit(:title, :denomination, :condition, :description, :price, :buyer_id, :seller_id, :profile_id, images: [])
     end
 
-   # include this here nad not in application_controller so it only applies to the listings and not to take me to new_listing when i just log in
-   def after_sign_in_path_for(profile)
-    if(current_user.profile)
-      if(params[:user][:user_type] == "buyer")
-        root_path
-      else
-        new_listing_path
-      end
-    elsif(params[:user][:user_type] == "returning_user")
-        root_path
-    else
-      new_profile_path(user_type: params[:user][:user_type]) || root_path
-    end
-  end
+
 end

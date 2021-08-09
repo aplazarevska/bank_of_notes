@@ -7,10 +7,13 @@
   <div class="col">
     <%# individual cards for each image, two images to be uploaded, obverse and reverse %>
     <div class="card" style="width: 100%;">
-      <%= image_tag @listing.images.first, class: "card-img-top" %>
+      <h5 class="card-title text-warning">Obverse</h5>
+      <%= image_tag @listing.images.first, alt: "Obverse of the banknote or coin", class: "card-img-top" %>
     </div>
+    <br>
     <div class="card" style="width: 100%">
-      <%= image_tag @listing.images.last, class: "card-img-top" %>
+      <h5 class="card-title text-warning">Reverse</h5>
+      <%= image_tag @listing.images.last, alt: "Reverse of the banknote or coin", class: "card-img-top" %>
     </div>
   </div>
       <!-- <%# included carousel to list through the photos %>
