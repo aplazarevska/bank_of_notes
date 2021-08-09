@@ -4,5 +4,6 @@ class Profile < ApplicationRecord
   has_many :listings_to_buy, class_name: "Listing", foreign_key: "buyer_id"
   # has_one :address
   
+  # the profile has to have username
   validates :username, presence: true
 end

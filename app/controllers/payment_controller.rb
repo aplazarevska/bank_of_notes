@@ -11,7 +11,7 @@ class PaymentController < ApplicationController
       root_path = ENV['ROOT_PATH']
     end
   
-
+    # stripe implementation
     Stripe.api_key = Rails.application.credentials.dig(:stripe_api_key)
     session = Stripe::Checkout::Session.create({
       payment_method_types: ['card'],
@@ -26,6 +26,7 @@ class PaymentController < ApplicationController
           quantity: 1,
         }],
         mode: 'payment',
+      # the user is redirected to the listing that he tried to purchase in case of successful or canceled purchase
       success_url: "#{root_path}/listings/#{@listing.id}?checkout=success",
       cancel_url: "#{root_path}/listings/#{@listing.id}",
     })

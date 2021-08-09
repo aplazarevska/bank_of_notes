@@ -14,19 +14,23 @@
  *= require_self
  */
 
- @import "bootstrap";
+// import bootstrap style
+@import "bootstrap";
 
+// additional styling of the navbar
 .navbar {
   position: absolute;
   height: 50px;
 }
 
+// additional styling of the card images
 .card-img-top {
   width: 100%;
   height: 30vw;
   object-fit: cover;
 }
 
+// additional styling of the titles for each listing
 .title {
   text-align: center;
   margin-top: 10%;
