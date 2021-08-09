@@ -9,14 +9,14 @@
         <% if listing.images && listing.images.first %>
          <%= image_tag listing.images.first, class: "card-img-top" %>
         <% else %>
-          <%= image_tag "coins.jpg", class: "card-img-top" %>
+          <p class="card-img-top">No image uploaded</p>
         <% end %>
       </div>
       <div class="card-body border border-warning">
         <p class="card-text">
           <strong><%= listing.title %></strong>
           <p>Denomination: <%= listing.denomination %></p>
-          <p>Price: <%= listing.price %></p>
+          <p>Price: $<%= listing.price %></p>
           <%= link_to 'View', listing_path(listing.id), class: "btn btn-warning" %>
         </p>
       </div>

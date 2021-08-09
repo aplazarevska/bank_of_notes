@@ -5,4 +5,7 @@ class Listing < ApplicationRecord
   has_one :year
   has_one :issuing_country
   # has_many_attached :pictures
+
+  validates :price, presence: true
+  validates :images, presence: true
 end

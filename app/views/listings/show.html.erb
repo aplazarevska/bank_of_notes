@@ -1,71 +1,33 @@
-<!-- <p id="notice"><%= notice %></p>
-
-<% @listing.images.each do |image| %>
-  <%= image_tag image %>
-<% end %>
-
-<p>
-  <strong>Title:</strong>
-  <%= @listing.title %>
-</p>
-
-<p>
-  <strong>Denomination:</strong>
-  <%= @listing.denomination %>
-</p>
-
-<p>
-  <strong>Condition:</strong>
-  <%= @listing.condition %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @listing.description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @listing.price %>
-</p>
-
-<%# <p>
-  <strong>Buyer:</strong>
-  <%= @listing.buyer_id %>
-<%# </p> %>
-
-<p>
-  <strong>Seller:</strong>
-  <%= @listing.seller.username %>
-</p> -->
-
-<%# <p>
-  <strong>Profile:</strong>
-  <%= @listing.profile_id %>
-<%# </p> %>
-
 <p id="notice"><%= notice %></p>
 
 <h1 class="title"><%= @listing.title %></h1>
 
+<%# made cards for better layout %>
 <div class="row">
   <div class="col">
-    <div class="card">
+    <%# individual cards for each image, two images to be uploaded, obverse and reverse %>
+    <div class="card" style="width: 100%;">
+      <h5 class="card-title text-warning">Obverse</h5>
+      <%= image_tag @listing.images.first, alt: "Obverse of the banknote or coin", class: "card-img-top" %>
+    </div>
+    <br>
+    <div class="card" style="width: 100%">
+      <h5 class="card-title text-warning">Reverse</h5>
+      <%= image_tag @listing.images.last, alt: "Reverse of the banknote or coin", class: "card-img-top" %>
+    </div>
+  </div>
+      <!-- <%# included carousel to list through the photos %>
       <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
             <%= image_tag @listing.images.first, class: "d-block w-100" %>
           </div>
           <div class="carousel-item">
-            <%= image_tag @listing.images.second, class: "d-block w-100" %>
-          </div>
-          <div class="carousel-item">
-            <%= image_tag @listing.images.third, class: "d-block w-100" %>
+            <%= image_tag @listing.images.last, class: "d-block w-100" %>
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -76,26 +38,42 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
-      </div> 
-    </div>
-  </div>
+      </div> -->
   <div class="col">
     <div class="card-body border border-warning">
+      <%# the information for the listings form %>
       <p class="card-text">
         <p>Denomination: <%= @listing.denomination %></p>
         <p>Condition: <%= @listing.condition %></p>
         <p>Description: <%= @listing.description %></p>
-        <p>Price: <%= @listing.price %></p>
-        <%= link_to 'Buy', listings_path, class: "btn btn-warning" %>
-      </p>
+        <p>Seller: <%= @listing.seller.username %></p>
+        <p>Price: $<%= @listing.price %></p>
+        <%# the buy button is there, but once clicked it checks if the user has signed in, then it takes it to payment site %>
+        <%# <%= link_to 'Buy', new_user_session_path(user_type: "buyer"), class: "btn btn-warning" %>
+        <div>
+          <%# if the user is the one who created the listing he can edit and delete the listing %>
+          <% if (current_user && current_user.profile && (current_user.profile.id == @listing.seller.id)) %>
+            <%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-warning" %> 
+            <%= link_to 'Delete', @listing, method: :delete, class: "btn btn-warning" %> 
+          <% else %>
+            <%# if the user is buyer he can see the sold button %>
+            <% if @listing.buyer %>
+              <button class="btn btn-warning">Sold</button>
+            <% else %>
+                <%# the user can see the buy button if he is signed in %>
+                <% if current_user && current_user.profile %>
+                  <%= link_to 'Buy', payment_path(listing_id: @listing.id), method: :post, class: "btn btn-warning" %>
+                <% end %>
+            <% end %>
+          <% end %>
+        </div>
+        </p>
     </div>
     <br>
   </div>
 </div>
 
-<%# <%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-warning"%>
+
 
 <br>
 <br>
-<%# <%= link_to 'View', listing_path(@listing.id), class: "btn btn-warning" %> 
-

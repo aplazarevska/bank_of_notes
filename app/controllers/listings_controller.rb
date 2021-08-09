@@ -9,11 +9,17 @@ class ListingsController < ApplicationController
 
   # GET /listings/1 or /listings/1.json
   def show
+    if params[:checkout] == "success"
+      @listing.buyer_id = current_user.profile.id
+      @listing.save
+    end
   end
 
   # GET /listings/new
   def new
     @listing = Listing.new
+    # @year = Year.all
+    # @issuing_country = Issuing_country.all
   end
 
   # GET /listings/1/edit
@@ -68,4 +74,6 @@ class ListingsController < ApplicationController
     def listing_params
       params.require(:listing).permit(:title, :denomination, :condition, :description, :price, :buyer_id, :seller_id, :profile_id, images: [])
     end
+
+
 end

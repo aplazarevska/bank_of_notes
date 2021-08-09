@@ -38,6 +38,7 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'devise'
+gem 'stripe'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
