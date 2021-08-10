@@ -7,8 +7,10 @@ class Listing < ApplicationRecord
   # has_many_attached :pictures
 
   # each listing has to have price and images
+  # validation for title so it will not make issues with stripe -> product data: name in payment_controller
   validates :price, presence: true
   validates :images, presence: true
+  validates :title, presence: true
   
   # validation custom method
   before_validation :number_of_images
