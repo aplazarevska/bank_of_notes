@@ -68,6 +68,6 @@ class ProfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def profile_params
-      params.require(:profile).permit(:first_name, :last_name, :username, :user_id)
+      params.require(:profile).permit(:first_name, :last_name, :username, :address, :suburb, :post_code, :country, :user_id)
     end
 end

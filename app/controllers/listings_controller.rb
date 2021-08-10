@@ -1,5 +1,6 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: %i[ show edit update destroy ]
+  # the user will not be authenticated when wanting to view the listings, only when creating or editing a listing
   before_action :authenticate_user!, only: %i[ new edit update destroy ]
 
   # GET /listings or /listings.json
@@ -9,6 +10,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/1 or /listings/1.json
   def show
+    # saves the output of successful checkout to the current user profile i.e. sold
     if params[:checkout] == "success"
       @listing.buyer_id = current_user.profile.id
       @listing.save
@@ -72,7 +74,7 @@ class ListingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def listing_params
-      params.require(:listing).permit(:title, :denomination, :condition, :description, :price, :buyer_id, :seller_id, :profile_id, images: [])
+      params.require(:listing).permit(:title, :denomination, :issuing_country, :year, :condition, :description, :price, :buyer_id, :seller_id, :profile_id, images: [])
     end
 
 
