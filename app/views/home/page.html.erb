@@ -1,16 +1,21 @@
-<%# fluid container gives responsiveness to the homepage %>
-<div class="container-fluid">
-  <div class="home-page-text">
-    <h1 class="p-3 mb-2 bg-warning text-dark">The Bank of Notes (and Coins!)</h1>
-    <br>
-    <br>
-    <h2>Buy and sell old money online</h2>
-    <br>
-    <p>An easy way to trade your old banknotes and coins.</p>
-    <br>
-    <p>If you have <strong>MONEY TO SELL</strong>, just click the sell button, sign in, and make a listing.</p>
-    <br>
-    <p>If you want to <strong>BUY OLD MONEY</strong> then browse through the offers, sign in, and simply buy your chosen listing through our secure payment system.</p>
+<h1 class="homepage-title p-3 mb-2 bg-warning text-dark">The Bank of Notes (and Coins!)</h1>
+  <div class="card-group home-page-text">
+    <div class="card" style="width: 100%;">
+      <%= image_tag "coins.jpg", alt: "Pile of coins", class: "card-img" %>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5><strong>Buy and sell old money online</strong></h5>
+        <p class="card-text">An easy way to trade your old banknotes and coins.</p>
+        <br>
+        <p>If you have <strong>MONEY TO SELL</strong>, just click the sell button, sign in, and make a listing.</p>
+        <br>
+        <p>If you want to <strong>BUY OLD MONEY</strong> then browse through the offers, sign in, and simply buy your chosen listing through our secure payment system.</p>
+      </div>
+    </div>
+    <div class="card" style="width: 100%;">
+      <%= image_tag "coins.jpg", alt: "Pile of coins", class: "card-img" %>
+    </div>
   </div>
-  <%# <%= image_tag "coins.jpg", alt: "Pile of coins", class: "img-fluid" %>
-</div>
+<br>
+<br>
