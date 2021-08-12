@@ -44,27 +44,27 @@ The app is written in Ruby on Rails, and additionally uses HTML and CSS. The dat
 
 #### Sitemap
 
-![marketplace_app_sitemap](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/docs/marketplace_app_sitemap.png)
+![marketplace_app_sitemap](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/src/bank_of_notes/readme_images/marketplace_app_sitemap.png)
 
 
 
 #### Screenshots
 
-![homepage](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/docs/homepage.png)
+![homepage](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/src/bank_of_notes/readme_images/homepage.png)
 
-![browse](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/docs/browse.png)
-
-
-
-![view](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/docs/view.png)
+![browse](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/src/bank_of_notes/readme_images/browse.png)
 
 
 
-![new_listing](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/docs/new_listing.png)
+![view](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/src/bank_of_notes/readme_images/view.png)
 
 
 
-![payment](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/docs/payment.png)
+![new_listing](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/src/bank_of_notes/readme_images/new_listing.png)
+
+
+
+![payment](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/src/bank_of_notes/readme_images/payment.png)
 
 
 
@@ -81,17 +81,17 @@ The app is written in Ruby on Rails, and additionally uses HTML and CSS. The dat
 
 # Wireframes
 
-![wireframes_homepage](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/docs/wireframes_homepage.png)
+![wireframes_homepage](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/src/bank_of_notes/readme_images/wireframes_homepage.png)
 
-![wireframes_browse](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/docs/wireframes_browse.png)
+![wireframes_browse](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/src/bank_of_notes/readme_images/wireframes_browse.png)
 
-![wireframes_view](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/docs/wireframes_view.png)
+![wireframes_view](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/src/bank_of_notes/readme_images/wireframes_view.png)
 
-![wireframes_login](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/docs/wireframes_login.png)
+![wireframes_login](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/src/bank_of_notes/readme_images/wireframes_login.png)
 
-![wireframes_new](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/docs/wireframes_new.png)
+![wireframes_new](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/src/bank_of_notes/readme_images/wireframes_new.png)
 
-![wireframes_search](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/docs/wireframes_search.png)
+![wireframes_search](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/src/bank_of_notes/readme_images/wireframes_search.png)
 
 
 
@@ -99,11 +99,11 @@ The app is written in Ruby on Rails, and additionally uses HTML and CSS. The dat
 
 
 
-![marketplace_app_erd](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/docs/marketplace_app_erd.png)
+![marketplace_app_erd](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/src/bank_of_notes/readme_images/marketplace_app_erd.png)
 
 
 
-![marketplace_app_erd_old](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/docs/marketplace_app_erd_old.png)
+![marketplace_app_erd_old](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/src/bank_of_notes/readme_images/marketplace_app_erd_old.png)
 
 
 
@@ -151,7 +151,7 @@ The images table has few attributes that describe the image. Images belong to a 
 
 # Database Schema Design
 
-![final_erd](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/docs/final_erd.png)
+![final_erd](/Users/Ana/Documents/CA/assignments/AnaLazarevska_T2A2/src/bank_of_notes/readme_images/final_erd.png)
 
 
 
